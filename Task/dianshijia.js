@@ -1,8 +1,7 @@
-
 /*
 更新时间: 2020-11-16 09:40
 赞赏:电视家邀请码`893988`,农妇山泉 -> 有点咸，万分感谢
-本脚本仅适用于电视家签到，支持Actions多账号运行，请用'#'或者换行隔开??
+本脚本仅适用于电视家签到，支持Actions多账号运行，请用'#'或者换行隔开‼️
 获取Cookie方法:
 1.将下方[rewrite_local]和[Task]地址复制的相应的区域，无需添加 hostname，每日7点、12点、20点各运行一次，其他随意
 2.APP登陆账号后，点击菜单栏'领现金',即可获取Cookie，进入提现页面，点击随机金额，可获取提现地址!!
@@ -107,7 +106,7 @@ if (isGetCookie = typeof $request !== 'undefined') {
   await Addsign();    // 额外奖励，默认额度
   if (drawalVal != undefined){
      await Withdrawal()
-   } else { detail += `【金额提现】? 请获取提现地址 \n`}; 
+   } else { detail += `【金额提现】❌ 请获取提现地址 \n`}; 
   await run();
   await tasks(); // 任务状态
   await getGametime();// 游戏时长
@@ -116,7 +115,7 @@ if (isGetCookie = typeof $request !== 'undefined') {
   await cashlist();   // 现金列表
   await coinlist();   // 金币列表
   if ($.isNode() && drawalCode == '0') {
-       await notify.sendNotify($.name+"提现成功", subTitle+'\n'+ detail)
+       await notify.sendNotify($.name, subTitle+'\n'+ detail)
      }
     }
    }
@@ -185,7 +184,7 @@ function signin() {
            }
     else if  (result.errCode == 4)
            {
-            detail = `【签到结果】 重复 ?? `
+            detail = `【签到结果】 重复 🔁 `
            }       
     else if  (result.errCode == 6)
            {
@@ -268,7 +267,7 @@ function cashlist() {
         for (i=0;i<result.data.length;i++){
  if
 (result.data[i].type == '2' && result.data[i].ctime >= time ){
-        cashres = `? 今日提现:`+result.data[i].amount/100+`元 `
+        cashres = `✅ 今日提现:`+result.data[i].amount/100+`元 `
         } 
       }
     if(cashres && cashtotal){
@@ -303,7 +302,7 @@ function dotask(code) {
         CountMax = taskres.data.dayDoCountMax
        console.log('任务代码:'+code+'，获得金币:'+taskres.data.getCoin)
        if ( code == 'playTask'&&taskres.data.doneStatus == 3) {
-       detail += `【播放任务】?? 完成/共计 `+CompCount+`/`+CountMax+` 次\n`
+       detail += `【播放任务】🔕 完成/共计 `+CompCount+`/`+CountMax+` 次\n`
         } 
        }
   else if (taskcode == '4000'){
@@ -339,10 +338,10 @@ function sleep() {
       if(logs)$.log(`睡觉任务: ${data}\n`)
       let sleepres = JSON.parse(data)
      if (sleepres.errCode==0){
-      sleeping = sleepres.data.name+'报名成功 ??'
+      sleeping = sleepres.data.name+'报名成功 🛌'
       }
 else if (sleepres.errCode==4006){
-      sleeping = '睡觉中??'
+      sleeping = '睡觉中😴'
       }
 else {
       sleeping = ''
@@ -380,22 +379,22 @@ function coinlist() {
   try {
     for (i=0;i<result.data.length && result.data[i].ctime >= time;i++){
      if (result.data[i].from=="领取走路金币"){
-      detail += `【走路任务】? 获得金币`+result.data[i].amount+'\n'
+      detail += `【走路任务】✅ 获得金币`+result.data[i].amount+'\n'
       }
      if (result.data[i].from=="领取睡觉金币"){
-      detail += `【睡觉任务】? 获得金币`+result.data[i].amount+'\n'
+      detail += `【睡觉任务】✅ 获得金币`+result.data[i].amount+'\n'
       }
      if (result.data[i].from=="手机分享"){
-      detail += `【分享任务】? 获得金币`+result.data[i].amount+'\n'
+      detail += `【分享任务】✅ 获得金币`+result.data[i].amount+'\n'
       }
      if (result.data[i].from=="双端活跃"){
-      detail += `【双端活跃】? 获得金币`+result.data[i].amount+'\n'
+      detail += `【双端活跃】✅ 获得金币`+result.data[i].amount+'\n'
       }
      if (result.data[i].from=="播放任务"){
-      detail += `【播放任务】? 获得金币`+result.data[i].amount+'\n'
+      detail += `【播放任务】✅ 获得金币`+result.data[i].amount+'\n'
       }
      if (result.data[i].from=="领取瓜分金币"){
-      detail += `【瓜分金币】? 获得金币`+result.data[i].amount+'\n'
+      detail += `【瓜分金币】✅ 获得金币`+result.data[i].amount+'\n'
       }
      if (result.data[i].from=="游戏时长奖励"){
       gamestime += result.data[i].amount
@@ -411,19 +410,19 @@ function coinlist() {
       }
    }
    if(todaysign){
-    detail += `【每日签到】? 获得金币`+todaysign+'\n'
+    detail += `【每日签到】✅ 获得金币`+todaysign+'\n'
    }
    if(vdamount){
-    detail += `【激励视频】? 获得金币`+vdamount+'\n'
+    detail += `【激励视频】✅ 获得金币`+vdamount+'\n'
    }
    if(onlamount){
-    detail += `【手机在线】? 获得金币`+onlamount+'\n'
+    detail += `【手机在线】✅ 获得金币`+onlamount+'\n'
    }
    if(gamestime){
-   detail += `【游戏时长】? 获得金币`+gamestime+'\n'
+   detail += `【游戏时长】✅ 获得金币`+gamestime+'\n'
    }
    if(i>0){
-   detail += `【任务统计】共完成${i+1}次任务??`
+   detail += `【任务统计】共完成${i+1}次任务🌷`
    }
    $.msg($.name+`  `+sleeping, subTitle, detail)
   } catch(e) {
@@ -446,7 +445,7 @@ function CarveUp() {
       if(logs)$.log(`瓜分百万金币: ${data}`)
       const result = JSON.parse(data)
      if (result.errCode == 0) {
-      detail += `【金币瓜分】? 报名成功\n`
+      detail += `【金币瓜分】✅ 报名成功\n`
     } 
     resolve()
    })
@@ -466,7 +465,7 @@ function Withdrawal() {
      if(logs)$.log(`金币随机兑换 : ${data}\n`)
       let todrawal = JSON.parse(data);
        if (todrawal.errCode == 0) {
-         detail += `【金额提现】? 到账`+todrawal.data.price/100+`元 ??\n`
+         detail += `【金额提现】✅ 到账`+todrawal.data.price/100+`元 🌷\n`
          drawalCode = todrawal.errCode
       } 
     resolve()
